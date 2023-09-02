@@ -2,19 +2,17 @@ package com.example.crudfix.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.antlr.v4.runtime.misc.NotNull;
 
-@Data
-@Table(name = "user_info")
 @Entity
-public class UserInfo {
+@Table(name = "more_info")
+@Data
+public class MoreInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idx;
     private String id;
-    private String nickname;
-    private String password;
-    private String reg_date;
-    private char flag;
+    private String email;
+    private String phone_number;
+    private String address;
+    private String upt_date;
 }
-
