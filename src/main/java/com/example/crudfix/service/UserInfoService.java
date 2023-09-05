@@ -1,10 +1,15 @@
 package com.example.crudfix.service;
 
+import com.example.crudfix.domain.dto.LoginDto;
 import com.example.crudfix.domain.entity.UserInfo;
 import com.example.crudfix.repository.UserInfoRepository;
+import com.example.crudfix.util.Crypto;
 import com.example.crudfix.util.NullChk;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class UserInfoService {
@@ -53,6 +58,23 @@ public class UserInfoService {
             return repository.existsById(id);
         } catch (Exception e) {
             return false;
+        }
+    }
+
+    public String LoginLogic(LoginDto loginDto) {
+
+        Optional<UserInfo> result = repository.findById(loginDto.getId());
+
+        if(result.isPresent()) {
+            boolean ChkPassword = Crypto.PasswordMatch(loginDto.getPassword(), result.get().getPassword());
+
+            if(ChkPassword) {
+                return "성공";
+            } else {
+                return "비밀번호를 잘못 입력하셨습니다";
+            }
+        } else {
+            return "아이디를 잘못 입력하셨습니다";
         }
     }
 
