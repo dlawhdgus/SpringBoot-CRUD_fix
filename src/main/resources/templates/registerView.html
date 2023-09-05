@@ -12,12 +12,11 @@
         <input type="text" placeholder="아이디" autofocus name="id"><br>
         <input type="text" placeholder="닉네임" name="nickname"><br>
         <input type="password" placeholder="비밀번호" name="password"><br>
-        <button type="submit">회원가입</button>
       </fieldset>
       <fieldset>
           <legend>선택 정보</legend>
           <input type="email" placeholder="이메일" name="email"><br>
-          <input type="tel" placeholder="전화번호" name="phone_number"><br>
+          <input type="tel" placeholder="전화번호(번호만 입력)" name="phone_number"><br>
           <input type="text" id="address_number" placeholder="우편번호" name="address_number">
           <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
           <input type="text" id="roadAddress" placeholder="도로명주소" name="roadAddress">
@@ -25,6 +24,7 @@
           <span id="guide" style="color:#999; display:none"></span>
           <input type="text" id="detailAddress" placeholder="상세주소" name="detailAddress">
           <input type="text" id="extraAddress" placeholder="참고항목" name="extraAddress"><br>
+          <button type="submit">회원가입</button>
       </fieldset>
   </form>
 
