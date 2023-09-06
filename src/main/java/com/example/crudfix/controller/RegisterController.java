@@ -9,6 +9,7 @@ import com.example.crudfix.util.NullChk;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +32,9 @@ public class RegisterController {
         this.moreInfoService = moreInfoService;
     }
 
+    @Value("${encoding.salt}")
+    private String salt;
+
 
     @GetMapping(value = "reg")
     public String regView() {
@@ -46,6 +50,8 @@ public class RegisterController {
                            String detailAddress,
                            String extraAddress) {
 
+
+
         String addressNumber = NullChk.isEmpty(address_number) ? "" : address_number;
         String RoadAddress = NullChk.isEmpty(roadAddress) ? "" : roadAddress;
         String JibunAddress = NullChk.isEmpty(jibunAddress) ? "" : jibunAddress;
@@ -57,9 +63,11 @@ public class RegisterController {
         UserInfo userInfo = new UserInfo();
         MoreInfo moreInfo = new MoreInfo();
 
+        String addSaltPassword = password + salt;
+
         userInfo.setId(id);
         userInfo.setNickname(nickname);
-        userInfo.setPassword(Crypto.encode(password));
+        userInfo.setPassword(Crypto.encode(addSaltPassword));
         userInfo.setReg_date(date.toString());
         userInfo.setFlag('u');
 

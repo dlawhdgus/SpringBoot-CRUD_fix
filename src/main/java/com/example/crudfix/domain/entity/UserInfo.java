@@ -12,10 +12,13 @@ public class UserInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idx;
     @NotNull
+    @Column(nullable = false)
     private String id;
     @NotNull
+    @Column(nullable = false)
     private String nickname;
     @NotNull
+    @Column(nullable = false)
     private String password;
     @NotNull
     private String reg_date;
