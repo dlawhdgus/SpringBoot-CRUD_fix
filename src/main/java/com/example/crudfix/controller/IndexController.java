@@ -10,4 +10,9 @@ public class IndexController {
     public String IndexView() {
         return "../static/index";
     }
+
+    @GetMapping(value = "/")
+    public String IndexView2() {
+        return "../static/index";
+    }
 }

@@ -1,0 +1,19 @@
+package com.example.crudfix.config;
+
+import lombok.Getter;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+
+@Getter
+@Configuration
+public class JwtConfiguration {
+
+    @Value("${jwt.secret}")
+    public String secret;
+
+    @Value("${jwt.expiration}")
+    public int expiration;
+
+    @Value("${jwt.prefix}")
+    public String prefix;
+}
